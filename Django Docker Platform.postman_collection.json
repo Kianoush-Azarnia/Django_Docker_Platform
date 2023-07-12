@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "54f6805a-d598-421e-b6e0-bd505ab2f80a",
+		"name": "Django Docker Platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17247067"
+	},
+	"item": [
+		{
+			"name": "apps",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"my-app\",\r\n\"image\": \"hub.hamdocker.ir/nginx:1.21\",\r\n\"envs\": [\"key1\": \"val1\",\"key2\": \"val2\"],\r\n\"command\": \"sleep 1000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/apps",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"apps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "apps",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "app with id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "edit app with id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "delete app with id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "run / build app with id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"app\": 2,\r\n    \"status\": \"Finished\",\r\n    \"parameters\": \"username:admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/apps/2/runs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"apps",
+						"2",
+						"runs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "app run history with id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

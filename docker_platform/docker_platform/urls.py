@@ -14,6 +14,7 @@ urlpatterns = [
     re_path(r'^api/apps/(?P<pk>\d+)/?$', AppViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='app-detail'),
     re_path(r'^api/apps/(?P<pk>\d+)/runs/?$', RunViewSet.as_view({'post': 'create', 'get': 'list'}), name='run-app'),
     re_path(r'^api/apps/(?P<pk>\d+)/runs/(?P<run_pk>\d+)/?$', RunViewSet.as_view({'get': 'retrieve'}), name='run-detail'),
+    re_path(r'^background-tasks/', include('background_task.urls')),
 ]
 
 urlpatterns += router.urls
