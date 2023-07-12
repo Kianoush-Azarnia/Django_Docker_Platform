@@ -1,21 +1,5 @@
-"""
-URL configuration for docker_platform project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from rest_framework import routers
 from docker_app.views import AppViewSet, RunViewSet
 
@@ -24,6 +8,16 @@ router.register(r'apps', AppViewSet)
 router.register(r'runs', RunViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
     path('admin/', admin.site.urls),
+]
+
+api_patterns = [
+    re_path(r'^apps/?$', AppViewSet.as_view({'get': 'list', 'post': 'create'}), name='app-list'),
+    re_path(r'^apps/(?P<pk>\d+)/?$', AppViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='app-detail'),
+    re_path(r'^apps/(?P<pk>\d+)/runs/?$', RunViewSet.as_view({'post': 'create'}), name='run-app'),
+    re_path(r'^apps/(?P<pk>\d+)/runs/(?P<run_pk>\d+)/?$', RunViewSet.as_view({'get': 'retrieve'}), name='run-detail'),
+]
+
+urlpatterns += [
+    path('api/', include(api_patterns)),
 ]
