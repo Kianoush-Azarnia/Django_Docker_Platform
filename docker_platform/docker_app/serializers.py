@@ -17,9 +17,9 @@ class AppSerializer(serializers.ModelSerializer):
 
 
 class RunSerializer(serializers.ModelSerializer):
-    app = serializers.PrimaryKeyRelatedField(read_only=True)
-
     class Meta:
         model = Run
-        fields = ['id', 'app', 'timestamp', 'status', 'parameters']
+        fields = ['id', 'timestamp', 'status', 'parameters']
+        read_only_fields = ['app']
+
 
