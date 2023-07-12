@@ -4,13 +4,17 @@ from .models import App, Run
 from .serializers import AppSerializer, RunSerializer
 
 class RunViewSet(viewsets.ModelViewSet):
-    queryset = Run.objects.all()
     serializer_class = RunSerializer
+
+    def get_queryset(self):
+        app_id = self.kwargs['pk']
+        return Run.objects.filter(app_id=app_id)
 
     def perform_create(self, serializer):
         app_id = self.kwargs['pk']
         app = get_object_or_404(App, id=app_id)
         serializer.save(app=app)
+
 
 
 class AppViewSet(viewsets.ModelViewSet):
