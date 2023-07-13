@@ -28,7 +28,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 CELERY_BROKER_URL = 'amqp://localhost'  # RabbitMQ broker URL
+
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Replace with your actual broker URL
+# CELERY_RESULT_BACKEND = 'redis://localhost:80ls #/0'  # Replace with your actual backend URL
+
 CELERY_RESULT_BACKEND = 'django-db'  # Use Django database as the result backend
+CELERY_CACHE_BACKEND = 'django-cache'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -46,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_celery_results',
     'docker_app'
 ]
 
