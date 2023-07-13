@@ -27,6 +27,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CELERY_BROKER_URL = 'amqp://localhost'  # RabbitMQ broker URL
+CELERY_RESULT_BACKEND = 'django-db'  # Use Django database as the result backend
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+# Define the CELERY_BEAT_SCHEDULE for periodic tasks if needed
+CELERY_BEAT_SCHEDULE = {}
 
 # Application definition
 
