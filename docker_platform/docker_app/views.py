@@ -4,6 +4,8 @@ from django.shortcuts import get_object_or_404
 from .models import App, Run
 from .serializers import AppSerializer, RunSerializer
 from .tasks import download_docker_image, run_docker_command
+from django.conf import settings
+import os
 
 
 class AppViewSet(viewsets.ModelViewSet):
@@ -14,7 +16,7 @@ class AppViewSet(viewsets.ModelViewSet):
         app = serializer.save()
 
         # Trigger the task to download the Docker image
-        download_docker_image.delay(app.id, app.image, f'static_root/{app.id}')
+        storage_location = os.path.join(settings.BASE_DIR, 'static', str(app.id))
 
         # Trigger the task to run the Docker command
         run_docker_command.delay(app.id)
