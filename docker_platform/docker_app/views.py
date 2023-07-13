@@ -16,7 +16,7 @@ class AppViewSet(viewsets.ModelViewSet):
         app = serializer.save()
 
         # Trigger the task to download the Docker image
-        storage_location = os.path.join(settings.BASE_DIR, 'static', str(app.id))
+        storage_location = os.path.join(settings.STATIC_ROOT, str(app.id))
 
         # Trigger the task to run the Docker command
         run_docker_command.delay(app.id)
