@@ -7,3 +7,4 @@ db.sqlite*
 .vscode
 .bak
 err.txt
+static/
