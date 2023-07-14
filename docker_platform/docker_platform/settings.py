@@ -31,6 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 CELERY_BROKER_URL = 'amqp://localhost'  # RabbitMQ broker URL
+BROKER_CONNECTION_TIMEOUT = 3600
 
 # CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Replace with your actual broker URL
 # CELERY_RESULT_BACKEND = 'redis://localhost:80ls #/0'  # Replace with your actual backend URL
