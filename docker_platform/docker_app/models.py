@@ -5,6 +5,7 @@ class App(models.Model):
     name = models.CharField(max_length=255)
     image = models.CharField(max_length=1000)
     command = models.CharField(max_length=1000)
+    storage_location = models.CharField(max_length=1000, null=True, blank=True)
 
 
 class EnvironmentVariable(models.Model):

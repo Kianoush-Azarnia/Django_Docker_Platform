@@ -13,7 +13,7 @@ class AppSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = App
-        fields = ['id', 'name', 'image', 'command', 'envs']
+        fields = ['id', 'name', 'image', 'command', 'envs', 'storage_location']
 
 
 class RunSerializer(serializers.ModelSerializer):
