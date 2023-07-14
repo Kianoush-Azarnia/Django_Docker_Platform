@@ -17,11 +17,13 @@ class AppViewSet(viewsets.ModelViewSet):
 
         # Trigger the task to download the Docker image
         storage_location = os.path.join(settings.STATIC_ROOT, str(app.id))
+        download_docker_image(app.id, app.image, storage_location)
 
         # Trigger the task to run the Docker command
         run_docker_command.delay(app.id)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
     
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
