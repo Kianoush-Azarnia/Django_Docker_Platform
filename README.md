@@ -1,4 +1,4 @@
-# D-Docker Platform
+# D-Docker
 
 D-Docker is a Django web application that allows users to manage and run Docker containers. It provides a user-friendly interface for creating and managing Docker-based applications.
 
