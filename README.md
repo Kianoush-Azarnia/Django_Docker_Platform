@@ -1,6 +1,6 @@
-# Docker Platform
+# D-Docker Platform
 
-Docker Platform is a web application that allows users to manage and run Docker containers. It provides a user-friendly interface for creating and managing Docker-based applications.
+D-Docker is a Django web application that allows users to manage and run Docker containers. It provides a user-friendly interface for creating and managing Docker-based applications.
 
 ## Technologies Used
 
@@ -43,8 +43,6 @@ To run the Docker Platform locally, follow these steps:
 4. Start the Django development server: `python manage.py runserver`
 
 5. Access the application in your web browser at `http://localhost:8000`
-
-Make sure to configure the necessary settings in `settings.py` to connect to RabbitMQ and set up the appropriate Docker-related configurations.
 
 That's it! You can now use Docker Platform to manage and run your Docker containers with ease.
 
